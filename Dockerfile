@@ -1,7 +1,10 @@
 FROM ubuntu:trusty
 MAINTAINER Borja Burgos <borja@tutum.co>, Mia Iversen <mia@chillfox.com
 
-RUN apt-get update && apt-get install -y python-pip && pip install awscli
+RUN apt-get update && apt-get install -y curl zip unzip
+RUN curl "https://awscli.amazonaws.com/awscli-exe-linux-x86_64.zip" -o "awscliv2.zip"
+RUN unzip awscliv2.zip
+RUN sudo ./aws/install
 
 ADD backup.sh /backup.sh
 ADD restore.sh /restore.sh
